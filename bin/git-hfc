@@ -1,0 +1,101 @@
+#!/bin/sh
+
+echo "Executing hotfix dendrogram - incident, developers, charges... "
+cd git-hfc
+
+git tag | grep hotfix > temp
+git show --tags | grep INC > temp2
+
+#tags file
+tagslines=`wc -l < temp`
+#incidents file
+fixlines=`wc -l < temp2`
+
+#var treedata
+vtree_head='var treeData = [ { "name": "Hotfixes","parent": "null", "children": ['
+vtree_tail="] } ];"
+vname='{"name":'
+vparent_top_level='"parent": "Top Level"'
+vchildren='"children": [' 
+vparent='"parent":'
+vparent_close='}]}'
+#others vars
+v_comma=","
+v_dquotes='"'
+v_list_inc=''
+
+
+#create html dendrogram and clean temp file
+function create_html ()
+{
+	cat html_head > Report_hotfixes.html
+	cat treefile >> Report_hotfixes.html
+	cat html_tail >> Report_hotfixes.html
+	rm  treefile
+	rm  temp
+	rm  temp2
+}
+
+#make incident node structure 
+function create_incident_level()
+{
+	echo $*
+	echo $1
+    echo $vchildren >> treefile
+ 
+    for param in "$@"
+    do
+	 if [ "$param" != "$1" ]; then
+		echo  $vname $v_dquotes $param $v_dquotes $v_comma $vparent $v_dquotes $1 $v_dquotes   $v_comma >> treefile
+        create_final_node $param 
+	 fi
+    done
+	echo "] }," >> treefile
+}
+
+#close incident level
+function create_incident_level_close()
+{
+    echo $1 $vparent_close >> incident_level
+}
+
+#make final_node
+function create_final_node()
+{
+	file="temp_final_node"
+	cat charges.csv | grep $1 > temp_final_node
+	cut -d' ' -f2- temp_final_node > temp2_final_node
+	mv temp2_final_node temp_final_node
+
+	if [[ -s $file ]] ; then
+		echo $vchildren >> treefile
+		while read linea
+		do
+	    #echo cut -f 1 $linea
+			echo $vname '"' $linea '",' $vparent '"' $1  '"},' >> treefile
+		done < temp_final_node
+		echo ']}' >> treefile
+	else
+		echo "}" >> treefile
+    fi ;
+	rm temp_final_node
+}
+
+#creation treedata
+echo $vtree_head > treefile
+
+#temp files
+file="temp"
+file2="temp2"
+file3="charges.csv"
+
+
+	while read -r a && read -r b  <&3; do 
+		echo $vname $v_dquotes $a $v_dquotes $v_comma >> treefile
+		echo $vparent_top_level $v_comma >> treefile	
+		create_incident_level  $a $b   
+	done <$file 3<$file2 
+
+	echo $vtree_tail >> treefile
+	create_html
+	read -p "Report create. Press enter to continue"
