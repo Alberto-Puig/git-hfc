@@ -40,3 +40,4 @@ git hfc
 New command should work, demdogram is created with
 all hotfix tags, developers and charges.
 
+```
