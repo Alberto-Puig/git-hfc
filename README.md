@@ -7,6 +7,7 @@ Custom Git Command to Control Hotfix cost.
 "hfc" is a custom git command to create dendrogram (tree-structured graph) where you can see
 info about hotfix and its relations with incidents, developers and their charges by incident.
 
+<img src="screenshots/ci.jpg" width="345px" />
 <img src="screenshots/git-hfc.jpg" width="345px" />
 
 Features:
