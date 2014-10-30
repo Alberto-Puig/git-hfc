@@ -5,28 +5,30 @@ Custom Git Command to Control Hotfix cost.
 ## Overview
 
 "hfc" is a custom git command to create dendrogram (tree-structured graph) where you can see
-info about hotfix and its relations with incidentes, developers and their charges by incident.
+info about hotfix and its relations with incidents, developers and their charges by incident.
 
 <img src="screenshots/git-hfc.jpg" width="345px" />
 
 Features:
 
-- Control hotfix cost by incident and developers. to local or remote server
-- Visual reporting HTML
+- Control hotfix cost by incident and developers to local or remote server.
+- Visual reporting HTML.
 
 ## Installation
 
 Linux:
 
-Copy git-hfc.sh to/usr/lib/git-core/
+Copy git-hfc from bin directory to /usr/lib/git-core/
 
 Make the file executable.
 
 Windows:
 
-Copy git-hfc.sh to C:\Program Files\Git\libexec\git-core  
+Copy git-hfc from bin directory to C:\Program Files\Git\libexec\git-core  
 
-Make the file executable.
+Both (Linux/Windows)
+
+Make git-hfc file executable.
 
 Copy csv file (charges.csv) with charges by incidents and developers in git-hfc directory. 
 
@@ -40,3 +42,4 @@ git hfc
 New command should work, demdogram is created with
 all hotfix tags, developers and charges.
 
+```
