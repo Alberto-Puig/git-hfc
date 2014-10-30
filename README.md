@@ -40,6 +40,6 @@ Start git bash and type:
 git hfc
 
 New command should work, demdogram is created with
-all hotfix tags, developers and charges. See in git-hfc directory.
+all hotfix tags, developers and charges. See git-hfc directory.
 
 ```
