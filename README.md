@@ -8,7 +8,8 @@ Custom Git Command to Control Hotfix cost.
 info about hotfix and its relations with incidents, developers and their charges by incident.
 
 <img src="screenshots/ci.jpg" width="345px" />
-<img src="screenshots/git-hfc.jpg" width="345px" />
+<br>
+<img src="screenshots/git-hfc2.jpg" width="345px" />
 
 Features:
 
