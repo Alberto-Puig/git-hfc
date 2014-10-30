@@ -98,4 +98,4 @@ file3="charges.csv"
 
 	echo $vtree_tail >> treefile
 	create_html
-	read -p "Report create. Press enter to continue"
+	read -p "Report created. Press enter to continue"
