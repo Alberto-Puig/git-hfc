@@ -30,9 +30,19 @@ Copy git-hfc from bin directory to C:\Program Files\Git\libexec\git-core
 
 Both (Linux/Windows)
 
-Make git-hfc file executable.
 
 Copy csv file (charges.csv) with charges by incidents and developers in git-hfc directory. 
+
+charges file should have this structure:
+
+INC_XXX ID_DEVELOPER TOTAL CHARGES
+
+## How tagging
+
+Make tag with prefix hotfix and add like comment incident ID with prefix INC_
+Make tag with "hotfix" prefix and add like comment the incident id with "INC_" prefix.
+
+<img src="screenshots/tagging.jpg" width="345px" />
 
 ## Check it work and/or Usage
 
