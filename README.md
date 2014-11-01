@@ -39,7 +39,6 @@ INC_XXX ID_DEVELOPER TOTAL CHARGES
 
 ## How tagging
 
-Make tag with prefix hotfix and add like comment incident ID with prefix INC_
 Make tag with "hotfix" prefix and add like comment the incident id with "INC_" prefix.
 
 <img src="screenshots/tagging.jpg" width="345px" />
