@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Executing hotfix dendrogram - incident, developers, charges... "
 cd git-hfc
